@@ -1,0 +1,828 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0032)https://racecontrol.indycar.com/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>INDYCAR Race Control - Live Timing &amp; Scoring</title>
+
+    <script src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/RaceControlMobile.js" type="text/javascript" async="" defer=""></script><script type="text/javascript" async="" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/ga.js"></script><script src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/sync" type="text/javascript"></script>
+
+    <script src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/require.min.js"></script>
+
+    <meta property="og:title" content="INDYCAR Race Control - Live Timing &amp; Scoring">
+    <meta property="og:url" content="http://racecontrol.indycar.com">
+    <meta property="og:image" content="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2019/RaceControl_img_2019.jpg">
+
+    <script src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/bluebird.min.js" class="pre"></script>
+    <script src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/msal.min.js"></script>
+    <script src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/jquery.min.js"></script>
+
+    <script src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/detectmobilebrowser.js"></script>
+
+    <script type="text/javascript">
+        if (jQuery.browser.mobile) {
+            $('head').append('<link rel="stylesheet" href="https://digbza2f4g9qo.cloudfront.net/styles/indycar/mobile.css" />');
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = "/scripts/indycar/mobile.js";
+            $("head").append(s);
+        }
+        else {
+            $('head').append('<link rel="stylesheet" href="https://digbza2f4g9qo.cloudfront.net/styles/indycar/desktop.css" />');
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = "/scripts/indycar/desktop.js";
+            $("head").append(s);
+        }
+    </script><link rel="stylesheet" href="./INDYCAR Race Control - Live Timing &amp; Scoring_files/desktop.css"><script type="text/javascript" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/desktop.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta property="fb:app_id" content="371698759518520">
+    <link rel="icon" href="https://digbza2f4g9qo.cloudfront.net/images/indycar/global/favicon.ico">
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-440007-37']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.indycar.com/">
+    <meta property="og:image" content="https://digbza2f4g9qo.cloudfront.net/~/media/IndyCar/Logos/logo.png?vs=1&amp;d=20151217T142314">
+    <meta property="og:site_name" content="IndyCar.com">
+    <meta property="og:admins" content="371698759518520">
+    <meta property="og:description" content="The Official Site of IndyCar News, Drivers, Schedule &amp; Shop | IndyCar.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@indycar">
+    <meta name="twitter:title" content="INDYCAR Race Control">
+    <meta name="twitter:description" content="Live Timing &amp; Scoring for INDYCAR, the IndyCar Series, and the Road To Indy.">
+    <meta name="twitter:image" content="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2019/RaceControl_img_2019.jpg">
+
+    <link href="./INDYCAR Race Control - Live Timing &amp; Scoring_files/Site.css" rel="stylesheet">
+
+
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                yos = (window.pageYOffset > $("#hiddenOffset").val());
+                var nta = $("#hiddenNoTrackActivity").val();
+                if (yos && nta == 'FALSE') {
+                    $("#StickyVideoBar").addClass("stickyVideo");
+                    $("#StickyVideoBar").removeClass("hiddenStickyVideo");
+                    $("#VideoDiv").addClass("scrolledTop");
+                    $("#VideoDiv").removeClass("nonScrolled");
+                    $("#SessionInformationDiv").addClass("sessionInformationDivScrolled");
+                    $("#SessionInformationDiv").removeClass("sessionInformationNonScrolled");
+                    if ($("#hiddenSeries").val() == 'I' || $("#hiddenSeries").val() == 'L') {
+                        $("#FeatureDriverDiv").addClass("featuredDriverScrolled");
+                        $("#FeatureDriverDiv").removeClass("featuredDriverHidden");
+                    }
+                    else {
+                        $("#FeatureDriverDiv").removeClass("featuredDriverScrolled");
+                        $("#FeatureDriverDiv").addClass("featuredDriverHidden");
+                    }
+                    $("#FlagDiv").addClass("flagScrolled");
+                    $("#FlagDiv").removeClass("flagNonScrolled");
+                    $("#SessionInfoDiv").removeClass("SessionInfoDivNonScrolled");
+                    $("#SessionInfoDiv").addClass("SessionInfoDivScrolled");
+
+                } else {
+                    $("#StickyVideoBar").addClass("hiddenStickyVideo");
+                    $("#StickyVideoBar").removeClass("stickyVideo");
+                    $("#VideoDiv").addClass("nonScrolled");
+                    $("#VideoDiv").removeClass("scrolledTop");
+                    $("#SessionInformationDiv").removeClass("sessionInformationDivScrolled");
+                    $("#SessionInformationDiv").addClass("sessionInformationNonScrolled");
+                    if ($("#hiddenSeries").val() == 'I' || $("#hiddenSeries").val() == 'L') {
+                        $("#FeatureDriverDiv").removeClass("featuredDriverScrolled");
+                        $("#FeatureDriverDiv").addClass("featuredDriverHidden");
+                    }
+                    $("#FlagDiv").removeClass("flagScrolled");
+                    $("#FlagDiv").addClass("flagNonScrolled");
+                    $("#SessionInfoDiv").addClass("SessionInfoDivNonScrolled");
+                    $("#SessionInfoDiv").removeClass("SessionInfoDivScrolled");
+                }
+            });
+        });
+    </script>
+
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="base/init" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/init.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="https://digbza2f4g9qo.cloudfront.net/scripts/indycar/modules/_desktop/header.js" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/header.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="base/util" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/util.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modernizr" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/modernizr.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="fastclick" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/fastclick.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="svg4everybody" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/svg4everybody.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery.mobile.events" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/jquery.mobile.events.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="slick" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/slick.min.js"></script><script charset="utf-8" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/moment_timeline.13f717990483d255b26e9b9bece28839.js"></script><script charset="utf-8" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/timeline.db1355ed1e60ba7e8e0b50c4c7fc3b95.js"></script></head>
+<body>
+    <div id="StickyVideoBar" class="stickyVideo">
+    </div>
+    <div>
+        <script type="text/javascript">
+            var wa_data =
+            {
+                page: {
+                    pageInfo: {
+                        pageName: "RaceControl",
+                        pageURL: "http://racecontrol.indycar.com"
+                    }
+                }
+            };
+        </script>
+        <script type="text/javascript">
+            (function () {
+                var randomh = Math.random();
+                var e = document.getElementsByTagName("script")[0];
+                var d = document.createElement("script");
+
+                d.src = "/scripts/RaceControlMobile.js?x=" + randomh + "";
+                d.type = "text/javascript";
+                d.async = true;
+                d.defer = true;
+                e.parentNode.insertBefore(d, e);
+            })();
+        </script>
+        <header id="header" class="header nonScrolledHeader">
+            <div class="utilitarian">
+                <div class="utilitarian__container">
+                    <div class="utilitarian__logo-container">
+                        <a href="http://www.indycar.com/" class="utilitarian__home">
+                            <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/INDYCAR-Dark.png" alt="IndyCar Series" class="utilitarian__logo">
+                        </a>
+                    </div>
+                    <!-- Social-->
+                    <div class="social-header">
+                        <div class="social-header-bar">
+                            <ul class="social-header-bar__social-list">
+                                <li class="social-header-bar__social-item">
+                                    <a href="http://www.instagram.com/indycar" class="social-header-bar__social-link" target="_blank">
+                                        <svg class="social-header-bar__social-instagram">
+                                            <use xlink:href="https://digbza2f4g9qo.cloudfront.net/assets/Images/indycar/sprite.svg#instagram"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="social-header-bar__social-item">
+                                    <a href="http://twitter.com/indycar" class="social-header-bar__social-link" target="_blank">
+                                        <svg class="social-header-bar__social-twitter">
+                                            <use xlink:href="https://digbza2f4g9qo.cloudfront.net/assets/Images/indycar/sprite.svg#twitter"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="social-header-bar__social-item">
+                                    <a href="http://facebook.com/indycar" class="social-header-bar__social-link" target="_blank">
+                                        <svg class="social-header-bar__social-facebook">
+                                            <use xlink:href="https://digbza2f4g9qo.cloudfront.net/assets/Images/indycar/sprite.svg#facebook"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="social-header-bar__social-item">
+                                    <a href="http://www.youtube.com/indycars" class="social-header-bar__social-link" target="_blank">
+                                        <svg class="social-header-bar__social-youtube">
+                                            <use xlink:href="https://digbza2f4g9qo.cloudfront.net/assets/Images/indycar/sprite.svg#youtube"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Nav-->
+                    <div class="nav" style="width: 100%; max-width: 100%;">
+                        <div class="nav__container">
+                            <ul class="nav__primary">
+
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/Drivers" class="nav__primary-link">Drivers</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/Schedule" class="nav__primary-link">Schedule</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/Videos" class="nav__primary-link">Video</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/Photos" class="nav__primary-link">Photo</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/News" class="nav__primary-link">News</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://www.indycar.com/Results" class="nav__primary-link">Results</a>
+
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://racecontrol.indycar.com/" class="nav__primary-link">Fan Info<svg class="nav__primary-icon"><use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#icon-header-arrow"></use></svg></a>
+                                    <div id="ctl01_ctl03_ctl02_ctl03_rptNavigation_pnlDropdown_6" class="more-links-parent nav__secondary-panel">
+
+
+                                        <div id="ctl01_ctl03_ctl02_ctl03_rptNavigation_rptDropdownNavigation_6_pnlNavSecondaryList_0" class="nav__secondary-list">
+
+
+                                            <ul class="nav__secondary">
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.indycar.com/ways-to-watch" class="nav__secondary-link">
+                                                        How to Watch / Listen
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.indycar.com/Radio" class="nav__secondary-link">
+                                                        INDYCAR Radio
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://indycarnation.indycar.com/" class="nav__secondary-link">
+                                                        INDYCAR Nation
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="http://fantasy.indycar.com/" class="nav__secondary-link">
+                                                        Fantasy Racing
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.indycar.com/Fan-Info/INDYCAR-101" class="nav__secondary-link">
+                                                        INDYCAR 101
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.indycar.com/eLearning/PitStop" class="nav__secondary-link">
+                                                        e-Learning Pitstop
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="https://racecontrol.indycar.com/" class="nav__primary-link">Road To Indy<svg class="nav__primary-icon"><use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#icon-header-arrow"></use></svg></a>
+                                    <div id="ctl01_ctl03_ctl02_ctl03_rptNavigation_pnlDropdown_7" class="more-links-parent nav__secondary-panel">
+
+
+                                        <div id="ctl01_ctl03_ctl02_ctl03_rptNavigation_rptDropdownNavigation_7_pnlNavSecondaryList_0" class="nav__secondary-list">
+
+
+                                            <ul class="nav__secondary">
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.indycar.com/IndyLights" class="nav__secondary-link">
+                                                        Indy Lights
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="http://www.indypro2000.com/" class="nav__secondary-link">
+                                                        Indy Pro 2000
+                                                    </a>
+                                                </li>
+
+                                                <li class="nav__secondary-item">
+
+                                                    <a href="https://www.usf2000.com/" class="nav__secondary-link">
+                                                        Cooper Tires USF2000 Championship
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li class="nav__primary-item">
+                                    <a href="http://shop.ims.com/indycar" class="nav__primary-link">Shop</a>
+
+                                </li>
+
+                                <li class="nav__primary-item nav__primary-item--social">
+                                    <div class="social-header-bar social-header-bar--alt">
+                                        <ul class="social-header-bar__social-list">
+                                            <li class="social-header-bar__social-item">
+                                                <a href="https://racecontrol.indycar.com/#" class="social-header-bar__social-link">
+                                                    <svg class="social-header-bar__social-instagram">
+                                                        <use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#instagram"></use>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li class="social-header-bar__social-item">
+                                                <a href="https://racecontrol.indycar.com/#" class="social-header-bar__social-link">
+                                                    <svg class="social-header-bar__social-twitter">
+                                                        <use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#twitter"></use>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li class="social-header-bar__social-item">
+                                                <a href="https://racecontrol.indycar.com/#" class="social-header-bar__social-link">
+                                                    <svg class="social-header-bar__social-facebook">
+                                                        <use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#facebook"></use>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                            <li class="social-header-bar__social-item">
+                                                <a href="https://racecontrol.indycar.com/#" class="social-header-bar__social-link">
+                                                    <svg class="social-header-bar__social-youtube">
+                                                        <use xlink:href="https://digbza2f4g9qo.cloudfront.net/images/indycar/sprite.svg#youtube"></use>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <a href="https://racecontrol.indycar.com/#" class="nav__toggle-nav"><span class="nav__nav-icon"></span></a>
+                        </div>
+                    </div>
+
+                </div>
+                <span class="utilitarian__background-container">
+                    <span class="utilitarian__background-column-brand"><span class="utilitarian__background-column"></span></span><span class="utilitarian__background-column-nav">
+                        <span class="utilitarian__background-column"></span>
+                        <span class="utilitarian__background-column"></span>
+                    </span>
+                </span>
+            </div>
+        </header>
+        <!-- specific js for different devices-->
+        <script>
+            require(["https://digbza2f4g9qo.cloudfront.net/scripts/indycar/modules/_desktop/header.js"], function (Header) {
+                new Header(
+                    {
+                        element: "#header",
+                        menuToggle: ".nav__toggle-nav",
+                        logoSwitchBtn: "utilitarian__site-switch",
+                        logoElements: ["utilitarian__logo-divide", "utilitarian__logo-alt-container"],
+                        moreLinks: ["more-links__close", "cta-list__link--more"],
+                        moreLinksPanel: "more-links",
+                        navPrimary: "nav__primary-link",
+                        stateCheck: "html",
+                        searchState: "search-open",
+                        searchToggle: ["utilitarian__toggle-search", "nav__toggle-search"],
+                        searchForm: "search-header-bar__search-form",
+                        searchClose: "search-header-bar__search-form-close",
+                        nextRaceToggle: "next-race__link"
+                    });
+            })
+        </script>
+
+        <div id="loginDiv" class="main-wrapper" style="min-height: 300px; padding-top: 25px; display: none;">
+            <div class="authenticationContent">
+                <div class="authenticationInformation">
+                    <div id="registrationInformationDiv">
+                        <h2 style="font-family: &#39;Roboto Condensed&#39;, sans-serif; font-size: 4rem; font-style: italic; font-weight: bold; text-transform: uppercase; padding: 5px 5px 5px 0; color: #ed1c24;">Live Timing &amp; Scoring</h2>
+                        <div style="clear: both; font-family: Arial, sans-serif; font-size: 2rem; color: black; padding: 0 0 15px 0;">
+                            Enjoy FREE premium content with a single username and password.  If you are an INDYCAR Nation member, your login works across all of our digital platforms.
+                        </div>
+                        <div style="clear: both; padding: 10px 0;">
+                            <input type="button" value="Sign In/Sign Up" onclick="login()" class="btn">
+                        </div>
+                        <div style="clear: both; font-family: Arial, sans-serif; font-size: 2rem; color: black; padding: 0 0 15px 0;">
+                            <i>This is a new Sign In process for 2019, please use your INDYCAR Nation or INDYCAR Mobile username and password to sign in or create a new account by using the button above.</i><br><br>
+                            For questions, please consult the FAQ <a href="https://www.indycar.com/2019/Login-FAQ" style="color: red;" target="_blank">HERE</a>.
+                        </div>
+                    </div>
+                </div>
+                <div class="authenticationImage">
+                    <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_authentication.jpg" class="authenticationImageDisplay">
+                </div>
+            </div>
+        </div>
+
+        <div id="noTrackActivityDiv" style="display: none; width: 100%;" class="main-wrapper">
+            <div class="bg-grey main-container">
+
+                <div id="top-content" class="LeftColumnContainer clearfix">
+                    <!--<img src="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2019/img_2019_no_track_activity.jpg" style="width: 100%;" />-->
+                    <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/NoTrackActivity_400px.jpg" style="width: 100%;">
+                </div>
+                <div class="LeftColumnContainer clearfix" style="margin-top: 25px;">
+                    <div class="feederLink2">
+                        <a href="https://www.indypro2000.com/results/live-timing" target="_blank">
+                            <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/IP2K-LiveTiming.jpg" border="0">
+                        </a>
+                    </div>
+                    <div class="feederLink3">
+                        <a href="https://www.usf2000.com/results/live-timing" target="_blank">
+                            <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/USF2K-LiveTiming.jpg" border="0">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="rainDelayDiv" style="display: none; width: 100%;" class="main-wrapper">
+            <div class="bg-grey main-container">
+                <div id="top-content" class="LeftColumnContainer clearfix">
+                    <a href="http://www.indycar.com/">
+                        <!--<img src="https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2019/2019_img_rain_delay.jpg" style="width: 100%;" />-->
+                        <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/RainDelay_400px.jpg" style="width: 100%;">
+                    </a>
+                </div>
+                <div class="LeftColumnContainer clearfix" style="margin-top: 25px;">
+                    <div class="feederLink2">
+                        <a href="https://www.indypro2000.com/results/live-timing" target="_blank">
+                            <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/IP2K-LiveTiming.jpg" border="0">
+                        </a>
+                    </div>
+                    <div class="feederLink3">
+                        <a href="https://www.usf2000.com/results/live-timing" target="_blank">
+                            <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/USF2K-LiveTiming.jpg" border="0">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="RaceControlContentDiv" class="main-wrapper" style="display: block;">
+            <div class="bg-grey main-container">
+
+                <div id="top-content" class="LeftColumnContainer clearfix">
+                    <div id="VideoDiv" class="scrolledTop" style="display: none;">
+                        <iframe id="VideoPlayer" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/saved_resource.html" frameborder="0" style="width: 100%; height: 100%;" allowfullscreen="allowfullscreen"></iframe>
+                    </div>
+                    <div id="radioContainer" class="VideoContainer" style="display: block;">
+                        <a id="AdLink" target="_blank" href="https://www.peacocktv.com/sports/indycar?cid=2104sportsindycarsymdisp2021&amp;utm_campaign=2104sportsindycar&amp;utm_source=nbcsportsgold&amp;utm_medium=sym_display_awa_banner&amp;utm_term=indycarinterest&amp;utm_content=indycar" src="https://www.peacocktv.com/sports/indycar?cid=2104sportsindycarsymdisp2021&amp;utm_campaign=2104sportsindycar&amp;utm_source=nbcsportsgold&amp;utm_medium=sym_display_awa_banner&amp;utm_term=indycarinterest&amp;utm_content=indycar">
+                            <div id="radioAd" class="radioAd" style="background-image: url(&quot;https://www.indycar.com/-/media/IndyCar/Ads/2021/RC2021_NBCPeacock_Horiz_Evergreen_V1_960x230.jpg&quot;);">
+                                <div class="radioDiv" id="RadioDiv">
+                                    <iframe src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/embed.html" width="280" height="200" scrolling="no" frameborder="no" marginheight="0" marginwidth="0"></iframe>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="RightRail">
+                        <div id="videoAd" style="text-align: center; margin-bottom: 10px; display: none;">
+                            <a id="VideoAdLink" target="_blank" href="https://www.peacocktv.com/sports/indycar?cid=2104sportsindycarsymdisp2022&amp;utm_campaign=2104sportsindycar&amp;utm_source=nbcsportsgold&amp;utm_medium=sym_display_awa_banner&amp;utm_term=indycarinterest&amp;utm_content=indycar">
+                                <img id="VideoAdImage" style="width: 75%;" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/RC2021_NBCPeacock_Evergreen_280x415.jpg">
+                            </a>
+                        </div>
+                        <div class="twitter" id="twitterDiv">
+                            <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 100%; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px; height: 8266.12px;" data-widget-id="profile:IndyCar" title="Twitter Timeline" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/saved_resource(1).html"></iframe>
+                            <script src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/widgets.js" charset="utf-8"></script>
+                        </div>
+                    </div>
+                    <div class="TimingAndVideoContainer">
+                        <div id="MobileHeaderDiv" class="mobileHeader" style="background-image: none;">
+                            <div id="FeatureDriverDiv" style="width: 450px; height: 215px; background-color: white;" class="featuredDriverScrolled">
+                                <div style="width: 50%; float: left;">
+                                    <div style="padding: 5px 0 5px 5px;">
+                                        <label id="fd_DriverFirstName" style="font-family: &#39;Roboto Condensed&#39;, sans-serif; font-size: 2rem; font-style: italic; font-weight: bold; text-transform: uppercase; color: black;">Jimmie</label><br>
+                                        <label id="fd_DriverLastName" style="font-family: &#39;Roboto Condensed&#39;, sans-serif; font-size: 2rem; font-style: italic; font-weight: bold; text-transform: uppercase; color: black;">Johnson</label>
+                                    </div>
+                                </div>
+                                <div style="width: 50%; float: right; font-size: 11px;">
+                                    <div style="width: 100%; height: 100px; min-height: 100px;">
+                                        <div style="float: right; clear: both; text-align: right; font-family: &#39;Roboto Condensed&#39;, sans-serif; font-size: 2rem; font-style: italic; font-weight: bold; text-transform: uppercase; padding: 5px 5px 5px 0; color: #ed1c24;">
+                                            <label id="fd_FeatureTitle">FASTEST IN SESSION</label>
+                                        </div>
+                                        <div style="float: right; font-family: Arial, sans-serif; font-size: 1.4rem; font-weight: 700; padding: 5px; clear: both; color: black;">
+                                            <label id="fd_Line1">BEST LAP TIME: 5:15.7245</label>
+                                        </div>
+                                        <div style="float: right; font-family: Arial, sans-serif; font-size: 1.4rem; font-weight: 700; padding: 5px; clear: both; color: black;">
+                                            <label id="fd_Line2">LAST LAP TIME: 5:15.7245</label>
+                                        </div>
+                                        <div style="float: right; font-family: Arial, sans-serif; font-size: 1.4rem; font-weight: 700; padding: 5px; clear: both; color: black;">
+                                            <label id="fd_Line3"></label>
+                                        </div>
+                                        <div style="float: right; font-family: Arial, sans-serif; font-size: 1.4rem; font-weight: 700; padding: 5px; clear: both; color: black;">
+                                            <label id="fd_Line4">TOTAL LAPS: 1</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 30%; float: left;">
+                                    <div style="padding-left: 5px; padding-top: 15px;">
+                                        <img id="fd_DriverHeadShot" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/JimmieJohnson.jpg">
+                                    </div>
+                                </div>
+                                <div style="width: 68%; float: right;">
+                                    <div style="width: 100%; text-align: center; padding-top: 5px;">
+                                        <img id="fd_CarIllustration" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/48-Carvana.png">
+                                    </div>
+                                </div>
+                                <div style="width: 30%; float: left;">
+                                    <div style="clear: both; font-size: 11px; padding-top: 15px;">
+                                        <img id="fd_CarNumber" style="padding: 5px; display: inline-block; vertical-align: middle;" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/48-DkBlue-T.png">
+                                        <img id="fd_EngineIcon" style="padding: 5px; display: inline-block; vertical-align: middle;" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo.png">
+                                        <img id="fd_DriverFlag" style="padding: 5px; display: inline-block; vertical-align: middle;" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/USA.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="SessionInformationDiv" class="sessionInformationDivScrolled" style="background: url(&quot;https://d2i8ejbvsgsqtt.cloudfront.net/TSImages/2018/img_flag_green.jpg&quot;) right top no-repeat;">
+                                <div style="float: left; width: 100%;">
+                                    <div id="FlagDiv" style="padding: 10px; float: left;" class="flagDiv flagScrolled">
+                                        <img id="MobileSeriesLogoImage" style="height: 80px; width: 225px;" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/indycar_logo.png">
+                                    </div>
+                                    <div id="SessionInfoDiv" style="float: left;" class="SessionInfoDivScrolled">
+                                        <div style="padding: 10px 3% 5px 3%; font-family: &#39;Roboto Condensed&#39;, sans-serif; font-size: 1.6rem; font-style: italic; font-weight: bold; text-transform: uppercase;">
+                                            <label id="MobileSessionNameLabel">Practice 1 for the GMR Grand Prix at Indianapolis Motor Speedway RC</label>
+                                        </div>
+                                        <div style="padding: 0 3%; font-family: Arial, sans-serif; font-size: 1.4rem;">
+                                            Commentary:
+                                            <label id="MobileSessionCommentLabel" style="font-family: Arial, sans-serif; font-size: 1.2rem; font-weight: normal;">7:56.000: #18 - David Malukas improved to 5th with a laptime of 6:13.4675s (23.510mph).</label>
+                                        </div>
+                                        <div id="MobileTimeRemainingDiv" style="padding: 5px 3% 0px; display: block;">
+                                            <label id="MobileTimeRemainingLabel" style="font-family: &#39;Roboto Condensed&#39;, sans-serif; font-size: 1.6rem; font-style: italic; font-weight: bold; text-transform: uppercase;">Time Remaining in Session: 37:02</label>
+                                        </div>
+                                        <div id="MobileLapsDiv" style="padding: 5px 3% 0px; display: block;">
+                                            <label id="MobileLapsLabel" style="font-family: &#39;Roboto Condensed&#39;, sans-serif; font-size: 1.6rem; font-style: italic; font-weight: bold; text-transform: uppercase;"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rotateDiv" style="width: 100%; background-color: black;">
+                                <div style="text-align: center; font-size: 12px; padding-left: 10px; padding-right: 5px; padding-bottom: 10px; width: 200px; margin: 0 auto; background-color: black;">
+                                    <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_rotate.png" height="22"><div><label style="vertical-align: top;">Rotate to Expand Columns</label></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="MobileTimingScoringDiv" class="mobile-timing-container"><div style="clear: both; background-color: black; height: 30px; min-height: 30px; line-height: 30px; float: left; margin-left: 1%;" class="mobileHeaderRow"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="expandedMobileColumns">Diff.</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="expandedMobileColumns">Gap</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="mobileNormalColumn">BLT</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="expandedMobileColumns">LLT</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="desktopExpandedColumns">BLS</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="desktopExpandedColumns">LLS</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="extraExpandedMobileColumns">Tire</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="extraExpandedMobileColumns">Laps</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="desktopExpandedColumns">S1</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="desktopExpandedColumns">S2</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="desktopExpandedColumns">S3</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="desktopExpandedColumns">BS1</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="desktopExpandedColumns">BS2</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: black; color: White; float: left; text-align: right;" class="desktopExpandedColumns">BS3</div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: Purple; color: White;" class="mobileRank">1</div><div style="float: left; min-height: 30px; height: 30px; background-color: Purple; color: White;" class="movementColumn"><div style="width: 25px; text-align: center;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: Purple; color: White;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/48-DkBlue-T(1).png" alt="Endplate for Car Number 48" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: Purple; color: White;" class="mobileDriverName">Jimmie Johnson</div><div style="float: left; min-height: 30px; background-color: Purple; color: White;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">--</div><div style="float: left; min-height: 30px;line-height: 30px; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">--</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="mobileNormalColumn">5:15.7245</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">5:15.7245</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">27.810</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">27.810</div><div style="float: left; min-height: 30px; text-align: right; background-color: Purple; color: White;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="extraExpandedMobileColumns">1</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White; -webkit-animation-name: example; -webkit-animation-duration: 3s; animation-name: example; animation-duration: 3s;" class="desktopExpandedColumns">25.4649</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White; -webkit-animation-name: example; -webkit-animation-duration: 3s; animation-name: example; animation-duration: 3s;" class="desktopExpandedColumns">23.4103</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">25.4649</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">27.4688</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">23.4103</div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: Purple; color: White;" class="mobileRank">2</div><div style="float: left; min-height: 30px; height: 30px; background-color: Purple; color: White;" class="movementColumn"><div style="width: 25px; text-align: center;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: Purple; color: White;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/11-White-T.png" alt="Endplate for Car Number 11" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: Purple; color: White;" class="mobileDriverName">Tatiana Calderon</div><div style="float: left; min-height: 30px; background-color: Purple; color: White;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">17.9991</div><div style="float: left; min-height: 30px; line-height: 30px; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">17.9991</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="mobileNormalColumn">5:33.7236</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">5:33.7236</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">26.310</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">26.310</div><div style="float: left; min-height: 30px; text-align: right; background-color: Purple; color: White;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="extraExpandedMobileColumns">1</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White; -webkit-animation-name: example; -webkit-animation-duration: 3s; animation-name: example; animation-duration: 3s;" class="desktopExpandedColumns">24.5251</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">27.6280</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">24.5251</div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: Purple; color: White;" class="mobileRank">3</div><div style="float: left; min-height: 30px; height: 30px; background-color: Purple; color: White;" class="movementColumn"><div style="width: 25px; text-align: center;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: Purple; color: White;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/30-Black-T.png" alt="Endplate for Car Number 30" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: Purple; color: White;" class="mobileDriverName">C. Lundgaard</div><div style="float: left; min-height: 30px; background-color: Purple; color: White;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">28.9002</div><div style="float: left; min-height: 30px; line-height: 30px; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">10.9011</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="mobileNormalColumn">5:44.6247</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">5:44.6247</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">25.478</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">25.478</div><div style="float: left; min-height: 30px; text-align: right; background-color: Purple; color: White;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="extraExpandedMobileColumns">1</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White; -webkit-animation-name: example; -webkit-animation-duration: 3s; animation-name: example; animation-duration: 3s;" class="desktopExpandedColumns">22.7671</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">27.1759</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">22.7671</div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: Purple; color: White;" class="mobileRank">4</div><div style="float: left; min-height: 30px; height: 30px; background-color: Purple; color: White;" class="movementColumn"><div style="width: 25px; text-align: center;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: Purple; color: White;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/4-Black-T.png" alt="Endplate for Car Number 4" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: Purple; color: White;" class="mobileDriverName">Dalton Kellett</div><div style="float: left; min-height: 30px; background-color: Purple; color: White;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">31.9348</div><div style="float: left; min-height: 30px; line-height: 30px; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">3.0346</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="mobileNormalColumn">5:47.6593</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">5:47.6593</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">25.256</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">25.256</div><div style="float: left; min-height: 30px; text-align: right; background-color: Purple; color: White;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="extraExpandedMobileColumns">1</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White; -webkit-animation-name: example; -webkit-animation-duration: 3s; animation-name: example; animation-duration: 3s;" class="desktopExpandedColumns">23.3714</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">25.9109</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">23.3714</div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: Purple; color: White;" class="mobileRank">5</div><div style="float: left; min-height: 30px; height: 30px; background-color: Purple; color: White;" class="movementColumn"><div style="width: 25px; text-align: center;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: Purple; color: White;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/18-Red-T.png" alt="Endplate for Car Number 18" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: Purple; color: White;" class="mobileDriverName">David Malukas</div><div style="float: left; min-height: 30px; background-color: Purple; color: White;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">57.7430</div><div style="float: left; min-height: 30px; line-height: 30px; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">25.8082</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="mobileNormalColumn">6:13.4675</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="expandedMobileColumns">6:13.4675</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">23.510</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">23.510</div><div style="float: left; min-height: 30px; text-align: right; background-color: Purple; color: White;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="extraExpandedMobileColumns">1</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White; -webkit-animation-name: example; -webkit-animation-duration: 3s; animation-name: example; animation-duration: 3s;" class="desktopExpandedColumns">26.3362</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: Purple; color: White;" class="desktopExpandedColumns">26.3362</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: Purple; color: White;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">6</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/3-Red-T.png" alt="Endplate for Car Number 3" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Scott McLaughlin</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">31.3931</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileRank">7</div><div style="float: left; min-height: 30px; height: 30px; background-color: #aaaaaa; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: #aaaaaa; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/5-Orange-T.png" alt="Endplate for Car Number 5" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileDriverName">Pato O'Ward</div><div style="float: left; min-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns">35.9721</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">8</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/10-DkBlue-T.png" alt="Endplate for Car Number 10" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Alex Palou</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">35.9251</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileRank">9</div><div style="float: left; min-height: 30px; height: 30px; background-color: #aaaaaa; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: #aaaaaa; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/7-LtBlue-T.png" alt="Endplate for Car Number 7" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileDriverName">Felix Rosenqvist</div><div style="float: left; min-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns">38.2784</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">10</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/28-Orange-T.png" alt="Endplate for Car Number 28" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Romain Grosjean</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">36.0459</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileRank">11</div><div style="float: left; min-height: 30px; height: 30px; background-color: #aaaaaa; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: #aaaaaa; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/77-Green-T.png" alt="Endplate for Car Number 77" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileDriverName">Callum Ilott</div><div style="float: left; min-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns">36.2834</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">12</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/2-Blue-T.png" alt="Endplate for Car Number 2" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Josef Newgarden</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">39.7471</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileRank">13</div><div style="float: left; min-height: 30px; height: 30px; background-color: #aaaaaa; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: #aaaaaa; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/9-Blue-T.png" alt="Endplate for Car Number 9" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileDriverName">Scott Dixon</div><div style="float: left; min-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns">39.0446</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">14</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/29-Orange-T.png" alt="Endplate for Car Number 29" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Devlin DeFrancesco</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black; -webkit-animation-name: example; -webkit-animation-duration: 3s; animation-name: example; animation-duration: 3s;" class="desktopExpandedColumns">39.1902</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">39.1902</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileRank">15</div><div style="float: left; min-height: 30px; height: 30px; background-color: #aaaaaa; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: #aaaaaa; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/8-Red-T.png" alt="Endplate for Car Number 8" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileDriverName">Marcus Ericsson</div><div style="float: left; min-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns">39.5916</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">16</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/06-Pink-T.png" alt="Endplate for Car Number 06" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Helio Castroneves</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">39.0329</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileRank">17</div><div style="float: left; min-height: 30px; height: 30px; background-color: #aaaaaa; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: #aaaaaa; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/60-Pink-T.png" alt="Endplate for Car Number 60" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileDriverName">Simon Pagenaud</div><div style="float: left; min-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns">38.2782</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">18</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/20-White-T.png" alt="Endplate for Car Number 20" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Conor Daly</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">38.6370</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileRank">19</div><div style="float: left; min-height: 30px; height: 30px; background-color: #aaaaaa; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: #aaaaaa; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/15-USA-T.png" alt="Endplate for Car Number 15" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileDriverName">Graham Rahal</div><div style="float: left; min-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns">38.8234</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">20</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/12-Red-T.png" alt="Endplate for Car Number 12" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Will Power</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">36.9085</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileRank">21</div><div style="float: left; min-height: 30px; height: 30px; background-color: #aaaaaa; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: #aaaaaa; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/45-White-T.png" alt="Endplate for Car Number 45" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileDriverName">Jack Harvey</div><div style="float: left; min-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns">37.7348</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">22</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/51-White-T.png" alt="Endplate for Car Number 51" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Takuma Sato</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">36.7870</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileRank">23</div><div style="float: left; min-height: 30px; height: 30px; background-color: #aaaaaa; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: #aaaaaa; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/6-Red-T.png" alt="Endplate for Car Number 6" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileDriverName">Juan Pablo Montoya</div><div style="float: left; min-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns">32.4327</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">25</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/14-White-T.png" alt="Endplate for Car Number 14" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Kyle Kirkwood</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_chevy_logo.png" alt="Chevy Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">36.1298</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileRank">26</div><div style="float: left; min-height: 30px; height: 30px; background-color: #aaaaaa; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: #aaaaaa; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/27-Pink-T.png" alt="Endplate for Car Number 27" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileDriverName">Alexander Rossi</div><div style="float: left; min-height: 30px; background-color: #aaaaaa; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns">34.9578</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: #aaaaaa; color: Black;" class="desktopExpandedColumns"></div></div><div style="width: 100%; clear: both; font-size: 14px;"><div style="float: left; min-height: 30px; margin-left: 1%; line-height: 30px; background-color: White; color: Black;" class="mobileRank">27</div><div style="float: left; min-height: 30px; height: 30px; background-color: White; color: Black;" class="movementColumn"><div style="width: 25px; text-align: center;"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_pit.png" width="25px" alt="Car In Pit" style="padding-top: 3px;"></div></div><div style="float: left; min-height: 30px; line-height: 30px; text-align: center; background-color: White; color: Black;" class="mobileCarNumber"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/26-Yellow-T.png" alt="Endplate for Car Number 26" height="25" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="mobileDriverName">Colton Herta</div><div style="float: left; min-height: 30px; background-color: White; color: Black;" class="mobileEngine"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_honda_logo(1).png" alt="Honda Logo" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="mobileNormalColumn"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="expandedMobileColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns"><img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/img_black_tire.png" alt="Primary Tire" height="20px" style="padding-top: 5px;"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="extraExpandedMobileColumns">0</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; text-align: right; background-color: White; color: Black;" class="desktopExpandedColumns">36.3871</div><div style="float: left; min-height: 30px; line-height: 30px; overflow: hidden; background-color: White; color: Black;" class="desktopExpandedColumns"></div></div></div>
+                        <div id="NoTowDiv" class="notowcontainer">
+                        </div>
+                        <div style="background-color: White; clear: both; overflow: hidden; width: 98%; margin-left: 1%;">
+                            <div id="LegendDiv" style="padding-top: 15px; font-size: 10px; font-weight: bold;
+                                    background-color: White; color: black; overflow: hidden; float: left;"><div class="legendItem" style="background-color: Purple; color: White;">Driver's Fastest Lap in Session</div><div class="legendItemDesktop" style="background-color: green; color: White;">Driver's Best Time in Highlighted Sector</div><div class="legendItem">Diff = Difference</div><div class="legendItem">BLT = Best Lap Time</div><div class="legendItem">LLT = Last Lap Time</div><div class="legendItemDesktop">BLS = Best Lap Speed</div><div class="legendItemDesktop">LLS = Last Lap Speed</div><div class="legendItemDesktop">S1 = Sector 1 Time</div><div class="legendItemDesktop">S2 = Sector 2 Time</div><div class="legendItemDesktop">S3 = Sector 3 Time</div><div class="legendItemDesktop">BS1 = Best Sector 1 Time</div><div class="legendItemDesktop">BS2 = Best Sector 2 Time</div><div class="legendItemDesktop">BS3 = Best Sector 3 Time</div></div>
+                            <div id="TrackMapDiv" style="background-color: White; float: left; text-align: center;">
+                                <img id="trackMapImage" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/ALA-Sections.jpg" style="width: 90%; padding: 5%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="LeftColumnContainer clearfix" style="margin-top: 25px;">
+                    <div class="feederLink2">
+                        <a href="https://www.indypro2000.com/results/live-timing" target="_blank">
+                            <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/IP2K-LiveTiming.jpg" border="0">
+                        </a>
+                    </div>
+                    <div class="feederLink3">
+                        <a href="https://www.usf2000.com/results/live-timing" target="_blank">
+                            <img src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/USF2K-LiveTiming.jpg" border="0">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer role="footer" id="footer" class="footer">
+            <!-- START: MODULES/FOOTER-NAVIGATION-->
+            <div class="footer-navigation">
+                <div class="footer-navigation__container">
+
+                    <ul class="footer-navigation__nav-items">
+
+                        <li class="dropdown nav-item">
+                            <a href="https://racecontrol.indycar.com/" class="nav-item__nav-link">
+                                Resources
+                            </a>
+                            <ul class="nav-item__sub-pages">
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Schedule" target="">
+                                        Event Schedule
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/-/media/Files/Current-Schedule.pdf" target="_blank">
+                                        PDF Schedule
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Radio/radio-broadcasts" target="_blank">
+                                        Podcasts
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown nav-item">
+                            <a href="https://racecontrol.indycar.com/" class="nav-item__nav-link">
+                                Experience INDYCAR
+                            </a>
+                            <ul class="nav-item__sub-pages">
+
+                                <li class="nav-item__nav-item">
+                                    <a href="http://racecontrol.indycar.com/" target="">
+                                        Timing &amp; Scoring
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="http://www.indycarnation.com/" target="_blank">
+                                        INDYCAR Nation
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/mobile-app" target="_blank">
+                                        INDYCAR App
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Videos" target="">
+                                        Videos
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Photos" target="">
+                                        Photos
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Fan-Info/INDYCAR-101" target="">
+                                        INDYCAR 101
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown nav-item">
+                            <a href="https://racecontrol.indycar.com/" class="nav-item__nav-link">
+                                Shop INDYCAR
+                            </a>
+                            <ul class="nav-item__sub-pages">
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-mens" target="_blank">
+                                        Mens
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-womens" target="_blank">
+                                        Womens
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-youth" target="_blank">
+                                        Youth
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-hats" target="_blank">
+                                        Headwear
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-accessories-diecast" target="_blank">
+                                        Diecast Cars
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/collections/indycar-accessories" target="_blank">
+                                        Accessories
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown nav-item">
+                            <a href="https://racecontrol.indycar.com/" class="nav-item__nav-link">
+                                INDYCAR Corporate
+                            </a>
+                            <ul class="nav-item__sub-pages">
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=3d71ccd9-4ea1-412b-a07c-89a74c544fd6&amp;ccId=19000101_000001&amp;type=MP&amp;lang=en_US" target="_blank">
+                                        Career Opportunities
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Radio" target="">
+                                        INDYCAR Radio
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://pec.imagencloud.com/" target="_blank">
+                                        Media Site
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Sponsors" target="">
+                                        Sponsors
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://www.indycar.com/Contact-Us" target="">
+                                        Contact Us
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown nav-item">
+                            <a href="https://www.indianapolismotorspeedway.com/" class="nav-item__nav-link">
+                                IMS Corporate
+                            </a>
+                            <ul class="nav-item__sub-pages">
+
+                                <li class="nav-item__nav-item">
+                                    <a href="http://www.ims.com/" target="_blank">
+                                        IMS.com
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="http://www.ims.com/buy-tickets" target="_blank">
+                                        IMS Tickets
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="http://www.imsproductionstv.com/" target="_blank">
+                                        IMS Productions
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://pec.imagencloud.com/" target="_blank">
+                                        IMS Media Site
+                                    </a>
+                                </li>
+
+                                <li class="nav-item__nav-item">
+                                    <a href="https://shop.ims.com/pages/ims-homepage" target="_blank">
+                                        IMS Online Store
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- START: MODULES/FOOTER-COPYRIGHT-->
+            <div class="copyright">
+                <div class="copyright__container">
+                    <p class="copyright__copyright">2022 INDYCAR® IS A REGISTERED TRADEMARK OF BRICKYARD TRADEMARKS, INC. / <a href="https://www.indycar.com/privacy">PRIVACY POLICY</a> &amp; <a href="https://www.indycar.com/terms-of-use">TERMS OF USE</a></p>
+
+                </div>
+            </div>
+
+        </footer>
+        <input type="hidden" id="hiddenSeries" value="I">
+        <input type="hidden" id="hiddenOffset" value="50">
+        <input type="hidden" id="hiddenNoTrackActivity" value="FALSE">
+    </div>
+
+    <script type="text/javascript">
+        if (jQuery.browser.mobile) {
+            document.getElementById('affiliatesDiv').style.display = 'none';
+            document.getElementById('footerNavDiv').style.display = 'none';
+            document.getElementById('divideDiv').style.display = 'none';
+            document.getElementById('otherSiteLink').style.display = 'none';
+            document.getElementById('altLogoDiv').style.display = 'none';
+            document.getElementById('TimingScoringTable').style.display = 'none';
+            document.getElementById('FanInfoLink').href = 'http://www.indycar.com';
+        }
+    </script>
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/widget_iframe.a472efb77af18f2ada6d133622c27c6a.html" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe" src="./INDYCAR Race Control - Live Timing &amp; Scoring_files/saved_resource(2).html"></iframe></body></html>

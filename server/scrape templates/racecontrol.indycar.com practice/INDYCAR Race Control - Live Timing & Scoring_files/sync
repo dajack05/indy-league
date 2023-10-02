@@ -1,0 +1,18 @@
+(async function () {
+
+
+var iDiv = document.createElement('div'); iDiv.hidden = true; iDiv.innerHTML = '<img src="https://8659222.fls.doubleclick.net/activity;src=8659222;type=invmedia;cat=indyc004;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;ord=1?" />'; document.body.appendChild(iDiv);
+
+
+
+var iDiv = document.createElement('div'); iDiv.hidden = true; iDiv.innerHTML = '<img src="https://20819577p.rfihub.com/ca.gif?rb=39513&ca=20819577&ra=YOUR_CUSTOM_CACHE_BUSTER&_o=39513&_t=20819577" />'; document.body.appendChild(iDiv);
+
+
+
+var iDiv = document.createElement('div'); iDiv.hidden = true; iDiv.innerHTML = '<img src="https://secure.adnxs.com/px?id=1080870&t=2" />'; document.body.appendChild(iDiv);
+
+
+
+
+
+})();

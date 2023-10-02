@@ -1,0 +1,24 @@
+{
+    "name": "tutorial-tab-tracker",
+    "version": "1.0.0",
+    "repository": "git@github.com:dajack05/tutorial-tab-tracker.git",
+    "author": "Daniel Jackson <dajack05@gmail.com>",
+    "license": "MIT",
+    "private": true,
+    "workspaces": [
+        "client",
+        "server",
+        "common"
+    ],
+    "scripts": {
+        "build":"yarn workspace @ill/client build",
+        "server": "yarn workspace @ill/server start",
+        "server-dev": "yarn workspace @ill/server dev",
+        "client": "yarn workspace @ill/client serve",
+        "start": "concurrently -n \"SERVER,CLIENT\" \"yarn server\" \"yarn client\"",
+        "start-dev": "concurrently -n \"SERVER,CLIENT\" \"yarn server-dev\" \"yarn client\""
+    },
+    "devDependencies": {
+        "concurrently": "^7.1.0"
+    }
+}

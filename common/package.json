@@ -1,0 +1,16 @@
+{
+  "name": "@ill/common",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx --watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "eslint": "^8.13.0"
+  }
+}
