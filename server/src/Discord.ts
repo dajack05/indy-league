@@ -17,6 +17,12 @@ export default class Discord {
   private static running: boolean;
 
   static async Initalize() {
+
+    if(Number.parseInt(process.env.FEATURE_DISCORD as string) != 1){
+      console.warn("WARNING: DISCORD FEATURE DISABLED");
+      return;
+    }
+
     this.rest = new REST({ version: "10" }).setToken(
       process.env.DISCORD_TOKEN as string
     );
