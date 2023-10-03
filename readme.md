@@ -34,7 +34,9 @@ The integrated Discord bot will announce when drafting has started, and when it'
     
     STATE_JSON="state.json"
     
-    FEATURE_DISCORD=1 # 1 or 0 to enable/disable the Discord bot.
+    # Discord disabled by default. Enter all DISCORD vars above
+    # before enabling.
+    FEATURE_DISCORD=0
     ```
 4. Go back to the project root.
 5. `yarn install`
